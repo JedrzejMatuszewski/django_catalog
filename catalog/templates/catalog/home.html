@@ -1,0 +1,53 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-4">
+
+  {% for product in product_obj%}
+  <div class="col mb-3" style="display: inline-flex;">
+    <div class="card">
+
+      <!--Card image-->
+      <div class="view overlay">
+        <a href="{% url 'product-detail' product.slug %}"><img class="card-img-top" style="height: 200px;"
+            src="{{ product.img.url }}" alt="Card image cap"></a>
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!--Title-->
+        <h4 class="card-title"><a href="{% url 'product-detail' product.slug %}">{{ product.title  }}</a></h4>
+        <h5>{{product.price}} zł</h5>
+        <!--Text-->
+        <p class="card-text">{{ product.short_description|truncatechars:150 }}</p>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <a href="{% url 'product-detail' product.slug %}"> <button type="button"
+            class="btn btn-light-blue btn-md">Więcej
+            informacji</button></a>
+
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- Card -->
+
+<!-- Card -->
