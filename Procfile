@@ -1,1 +1,1 @@
-web: gunicorn sojka.wsgi.py
+web: gunicorn sojka.wsgi
