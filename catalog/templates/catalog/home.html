@@ -1,10 +1,10 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
 
-<div class="row row-cols-1 row-cols-md-4">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
 
   {% for product in product_obj%}
-  <div class="col mb-3" style="display: inline-flex;">
+  <div class="col mb-4" style="display: inline-flex;">
     <div class="card">
 
       <!--Card image-->
@@ -17,17 +17,19 @@
       </div>
 
       <!--Card content-->
-      <div class="card-body">
+      <div class="card-body h-card-body">
 
         <!--Title-->
-        <h4 class="card-title"><a href="{% url 'product-detail' product.slug %}">{{ product.title  }}</a></h4>
+        <h4 class="card-title p-product-title"><a
+            href="{% url 'product-detail' product.slug %}">{{ product.title  }}</a></h4>
         <h5>{{product.price}} zł</h5>
         <!--Text-->
-        <p class="card-text">{{ product.short_description|truncatechars:150 }}</p>
+        <p class="card-text h-card-text">{{ product.short_description|truncatechars:120 }}</p>
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <a href="{% url 'product-detail' product.slug %}"> <button type="button"
-            class="btn btn-light-blue btn-md">Więcej
+        <a href="{% url 'product-detail' product.slug %}" class="h-a-btn"> <button type="button"
+            class="btn btn-outline-secondary  h-more-info">Więcej
             informacji</button></a>
+
 
       </div>
 

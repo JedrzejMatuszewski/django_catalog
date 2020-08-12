@@ -147,3 +147,16 @@ dmypy.json
 .pytype/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+node_modules
+catalog/static/catalog/src
+
+package.json
+webpack.mix.js
+package-lock.json
+mix-manifest.json
+
+to_heroku.sh
+to_local.sh
+
+
+
