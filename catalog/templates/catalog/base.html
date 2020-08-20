@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Sójka katalog produktów</title>
+    {% if title %}
+    <title>{{ title }} | Katalog produktów</title>
+    {% else %}
+    <title>Katalog produktów</title>
+    {% endif %}
 
     <link rel="stylesheet" href="{% static 'catalog/style.css' %}">
 
@@ -63,13 +67,19 @@
             <!-- Links -->
 
             <ul class="navbar-nav contact-info">
-                <li class="nav-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:kontakt@szymonsojka.pl">kontakt@szymonsojka.pl</a>
+                <li class="nav-item contact-text-1">
+                    <a class="page-contact-link" href="{% url 'contact' %}">Kontakt</a>
                 </li>
-                <li class="nav-item">
-                    <i class="fas fa-phone"></i>
-                    123 456 678
+                <li class="nav-item contact-text-2">
+                    <span>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:kontakt@szymonsojka.pl">kontakt@szymonsojka.pl</a>
+                    </span>
+                    <span>
+                        <i class="fas fa-phone"></i>
+                        123 456 678
+                    </span>
+
                 </li>
             </ul>
 
@@ -84,6 +94,37 @@
     <main>
         <div class="container mt-4">
             {% block content %}{% endblock content %}
+
+            <div class="row">
+                <div class="col-12 col-lg-3"></div>
+                <div class="col-12 col-lg-9 text-center">
+                    {% if is_paginated %}
+
+                    {% if page_obj.has_previous %}
+                    <a class="btn btn-outline-secondary mb-4" href="?page=1">Pierwsza</a>
+                    <a class="btn btn-outline-secondary mb-4"
+                        href="?page={{ page_obj.previous_page_number }}">Poprzednia</a>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <a class="btn btn-outline-secondary mb-4" href="?page={{ page_obj.next_page_number }}">Następna</a>
+                    <a class="btn btn-outline-secondary mb-4"
+                        href="?page={{ page_obj.paginator.num_pages }}">Ostatnia</a>
+                    {% endif %}
+
+                    {% endif %}
+                </div>
+            </div>
+
+
         </div>
     </main>
 
