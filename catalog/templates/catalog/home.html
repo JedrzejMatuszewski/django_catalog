@@ -24,11 +24,11 @@
 
           <!--Card image-->
           <div class="view overlay">
-            <a href="{% url 'product-detail' product.slug %}"><img class="card-img-top" style="height: 200px;"
-                src="{{ product.img.url }}" alt="Card image cap"></a>
-            <a href="#!">
-              <div class="mask rgba-white-slight"></div>
-            </a>
+            <a href="{% url 'product-detail' product.slug %}" class="card-img-top d-flex"
+              style="background: url('{{ product.img.url }}') center; background-size: cover; width: auto; height: 200px;">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
           </div>
 
           <!--Card content-->

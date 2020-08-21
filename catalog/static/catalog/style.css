@@ -87,6 +87,7 @@ p.h-card-text {
 .list-group-item.active {
   background-color: #34495e !important;
   border-color: #34495e !important;
+  font-weight: bold;
 }
 
 ul.navbar-nav.contact-info {
@@ -123,4 +124,13 @@ a.page-contact-link:hover {
     margin: 0 auto;
   }
 }
+
+/* GALLERYYYYYYYYYYYYYYYYY*/
+
+.ekko-lightbox-nav-overlay a span {
+  padding: 0 30px;
+  color: #000;
+}
+
+/*END GALLERYYYYYYYYYYYYYYYYYYYY*/
 

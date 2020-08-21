@@ -9,24 +9,26 @@
 
 
             <!--Slides-->
-            <img src="{{ product_obj.img.url}}" alt="Product image" class="img-fluid" style="max-height: 400px;">
+            <a href="{{ product_obj.img.url }}" data-toggle="lightbox" data-gallery="example-gallery">
+                <img src="{{ product_obj.img.url }}" alt="Product image" class="img-fluid" style="max-height: 400px;">
+            </a>
+
             <!--/.Slides-->
 
-
+            <!-- Gallery -->
             <div class="row mb-4">
-                <div class="col-md-12">
-                    <div id="mdb-lightbox-ui"></div>
-                    <div class="mdb-lightbox no-margin d-flex">
+                <div class="col-12">
+                    <div class="row">
                         {% for gallery in gallery_obj %}
-                        <figure class="col-md-4">
-                            <a href="{{ gallery.img.url }}">
-                                <img src="{{ gallery.img.url }}" class="img-fluid">
-                            </a>
-                        </figure>
+                        <a href="{{ gallery.img.url }}" data-toggle="lightbox" data-gallery="example-gallery"
+                            class="col-4">
+                            <img src="{{ gallery.img.url }}" class="img-fluid">
+                        </a>
                         {% endfor %}
                     </div>
                 </div>
             </div>
+            <!-- /Gallery -->
 
 
         </div>
