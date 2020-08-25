@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from django.views.generic import ListView, DetailView
-from django.views.generic.detail import SingleObjectMixin
+from django.views.generic import ListView, DetailView, UpdateView
 
 from .models import Product, ProductGallery, Category
 
@@ -36,8 +35,19 @@ class ProductDetailView(DetailView):
         return context
 
 
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = ['title', 'category', 'price', 'sale', 'auction_url', 'img', 'short_description', 'description']
+    template_name = 'catalog/product_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Edytuj produkt'
+        return context
+
+
 class ProductCategoryListView(ListView):
-    model = Category
+    model = Product
     template_name = 'catalog/product_category.html'
     context_object_name = 'product_obj'
     paginate_by = 9
