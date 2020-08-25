@@ -9,6 +9,7 @@
 
 
             <!--Slides-->
+            {% if product.sale > 0 %} <div class="onsale">Promocja!</div> {% endif %}
             <a href="{{ product_obj.img.url }}" data-toggle="lightbox" data-gallery="example-gallery">
                 <img src="{{ product_obj.img.url }}" alt="Product image" class="img-fluid" style="max-height: 400px;">
             </a>
@@ -41,7 +42,13 @@
 
             <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
                 <span class="red-text font-weight-bold">
-                    <strong>{{ product_obj.price }} zł</strong>
+                    {% if product_obj.sale > 0 %}
+                    <strong>{{product_obj.sale}} zł <span class="sale strikethrough"
+                            style="font-size: 20px;">{{ product_obj.price }} zł
+                        </span></strong>
+                    {% else %}
+                    <strong> {{ product_obj.price }} zł </strong>
+                    {% endif %}
                 </span>
             </h3>
 
@@ -60,7 +67,12 @@
 
             </div>
 
-            <button type="button" class="btn btn-outline-secondary btn-rounded waves-effect">Przejdź do Allegro</button>
+            <a href="{{ product_obj.auction_url }}" target="_blank"><button type="button"
+                    class="btn btn-outline-secondary btn-rounded waves-effect">Przejdź do Allegro</button></a>
+            {% if request.user.is_superuser %}
+            <a href="{% url 'product-update' product.slug %}" class="h-a-btn"> <button type="button"
+                    class="btn btn-outline-secondary ">Edytuj</button></a>
+            {% endif %}
 
         </div>
     </div>

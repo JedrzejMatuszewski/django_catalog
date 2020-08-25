@@ -12,7 +12,7 @@ admin.site.register(Category, CategoryAdmin)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'product_id', 'category', 'price',)
+    list_display = ('title', 'category', 'price', 'sale', 'auction_url') 
     inlines = [ProductGalleryAdmin]
     
     class Meta:
