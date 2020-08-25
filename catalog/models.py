@@ -17,11 +17,12 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
-    product_id = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     short_description = models.TextField(default="")
     description = models.TextField(default="")
     price = models.IntegerField(default=0)
+    sale = models.IntegerField(default=0)
+    auction_url = models.CharField(max_length=200, default="#")
     img = models.ImageField(default='img/default-product-img.jpg', upload_to='img/')
 
     slug = models.SlugField(null=True, unique=True)

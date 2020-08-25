@@ -28,11 +28,12 @@
 
           <!--Card image-->
           <div class="view overlay">
-            <a href="{% url 'product-detail' product.slug %}"><img class="card-img-top" style="height: 200px;"
-                src="{{ product.img.url }}" alt="Card image cap"></a>
-            <a href="#!">
-              <div class="mask rgba-white-slight"></div>
-            </a>
+            {% if product.sale > 0 %} <div class="onsale">Promocja!</div> {% endif %}
+            <a href="{% url 'product-detail' product.slug %}" class="card-img-top d-flex"
+              style="background: url('{{ product.img.url }}') center; background-size: cover; width: auto; height: 200px;">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
           </div>
 
           <!--Card content-->
@@ -41,13 +42,22 @@
             <!--Title-->
             <h4 class="card-title p-product-title"><a
                 href="{% url 'product-detail' product.slug %}">{{ product.title  }}</a></h4>
-            <h5>{{product.price}} zł</h5>
+            {% if product.sale > 0 %}
+            <h5>{{product.sale}} zł <span class="sale strikethrough">{{ product.price }} zł </span></h5>
+            {% else %}
+            <h5> {{ product.price }} zł </h5>
+            {% endif %}
             <!--Text-->
             <p class="card-text h-card-text">{{ product.short_description|truncatechars:120 }}</p>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
             <a href="{% url 'product-detail' product.slug %}" class="h-a-btn"> <button type="button"
                 class="btn btn-outline-secondary  h-more-info">Więcej
                 informacji</button></a>
+
+            {% if request.user.is_superuser %}
+            <a href="{% url 'product-update' product.slug %}" class="h-a-btn"> <button type="button"
+                class="btn btn-outline-secondary  h-more-info">Edytuj</button></a>
+            {% endif %}
 
 
           </div>
