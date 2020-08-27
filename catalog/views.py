@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views.generic import ListView, DetailView, UpdateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Product, ProductGallery, Category
 
 from django.core.paginator import Paginator
@@ -9,7 +9,7 @@ class  ProductListView(ListView):
     model = Product
     template_name = 'catalog/home.html'
     context_object_name = 'product_obj'
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('title')
     paginate_by = 9
 
 
@@ -35,7 +35,7 @@ class ProductDetailView(DetailView):
         return context
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
     fields = ['title', 'category', 'price', 'sale', 'auction_url', 'img', 'short_description', 'description']
     template_name = 'catalog/product_update.html'
@@ -45,6 +45,11 @@ class ProductUpdateView(UpdateView):
         context['title'] = 'Edytuj produkt'
         return context
 
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
 
 class ProductCategoryListView(ListView):
     model = Product
@@ -52,8 +57,10 @@ class ProductCategoryListView(ListView):
     context_object_name = 'product_obj'
     paginate_by = 9
 
+
     def get_queryset(self):
         queryset = get_list_or_404(Product,category__slug=self.kwargs['slug'])
+        queryset.sort()
         return queryset
 
 
