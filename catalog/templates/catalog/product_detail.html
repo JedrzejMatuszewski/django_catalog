@@ -9,21 +9,21 @@
 
 
             <!--Slides-->
-            {% if product.sale > 0 %} <div class="onsale">Promocja!</div> {% endif %}
+
             <a href="{{ product_obj.img.url }}" data-toggle="lightbox" data-gallery="example-gallery">
-                <img src="{{ product_obj.img.url }}" alt="Product image" class="img-fluid" style="max-height: 400px;">
+                <img src="{{ product_obj.img.url }}" alt="Product image" class="img-fluid detail-img">
             </a>
 
             <!--/.Slides-->
 
             <!-- Gallery -->
-            <div class="row mb-4">
+            <div class="row mb-4 mt-4">
                 <div class="col-12">
                     <div class="row">
                         {% for gallery in gallery_obj %}
                         <a href="{{ gallery.img.url }}" data-toggle="lightbox" data-gallery="example-gallery"
                             class="col-4">
-                            <img src="{{ gallery.img.url }}" class="img-fluid">
+                            <img src="{{ gallery.img.url }}" class="img-fluid" style="max-height: 90px;">
                         </a>
                         {% endfor %}
                     </div>
@@ -34,11 +34,14 @@
 
         </div>
 
-        <div class="col-lg-5 text-center text-md-left">
+        <div class="col-lg-5 text-left">
 
             <h2
                 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4 p-product-title">
-                {{ product_obj.title }}</h2>
+                {{ product_obj.title }}
+                {% if product.sale > 0 %} <span class="onsale_detail">-{{ product.show_promo }}%
+                </span> {% endif %}
+            </h2>
 
             <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
                 <span class="red-text font-weight-bold">
@@ -67,18 +70,25 @@
 
             </div>
 
-            <a href="{{ product_obj.auction_url }}" target="_blank"><button type="button"
-                    class="btn btn-outline-secondary btn-rounded waves-effect">Przejdź do Allegro</button></a>
-            {% if request.user.is_superuser %}
-            <a href="{% url 'product-update' product.slug %}" class="h-a-btn"> <button type="button"
-                    class="btn btn-outline-secondary ">Edytuj</button></a>
-            {% endif %}
+            <div class="text-center text-md-left">
+                <a href="{{ product_obj.auction_url }}" target="_blank"><button type="button"
+                        class="btn btn-outline-secondary btn-rounded waves-effect">Przejdź do Allegro</button></a>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'product-update' product.slug %}" class="h-a-btn"> <button type="button"
+                        class="btn btn-outline-secondary ">Edytuj</button></a>
+                {% endif %}
+            </div>
+
 
         </div>
     </div>
 
 </section>
 <!--Section: Content-->
-{{ product_obj.description|safe }}
+
+<section class="mt-4">
+    {{ product_obj.description|safe }}
+</section>
+
 
 {% endblock content %}

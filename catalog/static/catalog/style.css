@@ -129,6 +129,12 @@ a.page-contact-link:hover {
   }
 }
 
+@media (max-width: 992px) {
+  .contact-img {
+    display: none;
+  }
+}
+
 /* GALLERYYYYYYYYYYYYYYYYY*/
 
 .ekko-lightbox-nav-overlay a span {
@@ -163,7 +169,17 @@ a.page-contact-link:hover {
   padding: 7px;
   background-color: #f39c00;
   color: #fff;
-  font-weight: bold;
   border-radius: 0 0 10px 0;
+}
+
+.onsale_detail {
+  color: #f39c00;
+}
+
+.detail-img {
+  max-height: 300px;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  width: 100%;
 }
 

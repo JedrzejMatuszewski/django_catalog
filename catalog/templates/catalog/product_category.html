@@ -28,7 +28,8 @@
 
           <!--Card image-->
           <div class="view overlay">
-            {% if product.sale > 0 %} <div class="onsale">Promocja!</div> {% endif %}
+            {% if product.sale > 0 %} <div class="onsale">-{{ product.show_promo }}%
+            </div> {% endif %}
             <a href="{% url 'product-detail' product.slug %}" class="card-img-top d-flex"
               style="background: url('{{ product.img.url }}') center; background-size: cover; width: auto; height: 200px;">
               <a href="#!">
