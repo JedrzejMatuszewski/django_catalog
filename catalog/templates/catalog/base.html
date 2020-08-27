@@ -3,14 +3,28 @@
 <html lang="pl">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169981389-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-169981389-3');
+    </script>
+    <!--/Google Analytics-->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {% if title %}
-    <title>{{ title }} | Katalog produktów</title>
+    <title>{{ title }} | Katalog Sójka </title>
     {% else %}
-    <title>Katalog produktów</title>
+    <title> Katalog Sójka </title>
     {% endif %}
 
     <link rel="stylesheet" href="{% static 'catalog/style.css' %}">
@@ -69,8 +83,7 @@
             <!-- Links -->
             <ul class="navbar-nav navbar-brand">
                 <li class="nav-item">
-                    <a class="nav-link brand-sojka" href="{%url 'homepage' %}">Katalog
-                        Produktów - Szymon Sójka</a>
+                    <a class="nav-link brand-sojka" href="{%url 'homepage' %}">Katalog Sójka</a>
                 </li>
             </ul>
             <!-- Links -->
@@ -82,11 +95,11 @@
                 <li class="nav-item contact-text-2">
                     <span>
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@gmail.com">info@gmail.com</a>
+                        <a href="mailto:katalogsojka@gmail.com">katalogsojka@gmail.com</a>
                     </span>
                     <span>
                         <i class="fas fa-phone"></i>
-                        123 456 678
+                        517 665 237
                     </span>
 
                 </li>
@@ -139,7 +152,7 @@
 
     <footer class="mt-2">
         <div class="footer">
-            Copyright &copy; 2020 <a href="https://matuszewski.co">matuszewski.co</a>
+            Copyright &copy; 2020 katalogsojka.pl
         </div>
     </footer>
 
