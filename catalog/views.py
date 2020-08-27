@@ -17,7 +17,7 @@ class  ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         categories = Category.objects.all().order_by('title')
         context['category_obj'] = categories
-        context['title'] = 'Katalog'
+        context['title'] = 'Produkty'
         return context
 
 
