@@ -60,13 +60,9 @@
                 <p class="ml-xl-0 ml-4">{{ product_obj.short_description }}</p>
 
                 <p class="ml-xl-0 ml-4">
-                    <strong>Kategoria: </strong>{{ product_obj.category }}</p>
-                <p class="ml-xl-0 ml-4">
-                    <strong>Nr. kat.: </strong>{{ product.slug }}</p>
-                <p class="ml-xl-0 ml-4">
-                    <strong>Moc: </strong>456 km</p>
-                <p class="ml-xl-0 ml-4">
-                    <strong>Vmax: </strong>319 km/h</p>
+                    <strong>Kategoria: </strong>
+                    <a href="{% url 'product-category' product_obj.category.slug %}"
+                        style="color: #6c757d;">{{ product_obj.category }}</a></p>
 
             </div>
 
