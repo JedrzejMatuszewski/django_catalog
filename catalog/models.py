@@ -27,6 +27,9 @@ class Product(models.Model):
     img = models.ImageField(default='img/default-product-img.jpg', upload_to='img/')
     slug = models.SlugField(null=True, unique=True)
 
+    mark = models.CharField(max_length=50, default=0)
+    condition = models.CharField(max_length=50, default=0)
+
     def __str__(self):
         return self.title
 

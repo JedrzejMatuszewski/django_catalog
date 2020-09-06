@@ -37,7 +37,7 @@ class ProductDetailView(DetailView):
 
 class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
-    fields = ['title', 'category', 'price', 'sale', 'auction_url', 'img', 'short_description', 'description']
+    fields = ['title', 'category', 'price', 'sale', 'mark', 'condition', 'auction_url', 'img', 'short_description', 'description']
     template_name = 'catalog/product_update.html'
 
     def get_context_data(self, **kwargs):
