@@ -59,16 +59,42 @@
 
                 <p class="ml-xl-0 ml-4">{{ product_obj.short_description }}</p>
 
-                <p class="ml-xl-0 ml-4">
-                    <strong>Kategoria: </strong>
-                    <a href="{% url 'product-category' product_obj.category.slug %}"
-                        style="color: #6c757d;">{{ product_obj.category }}</a></p>
+                <p class="ml-xl-0 ml-4 d-flex flex-column">
+                    {% if product_obj.mark != '0' %}
+                    <span>
+                        <strong>Marka: </strong>
+                        {{ product_obj.mark }}
+                    </span>
+                    {% endif %}
+
+                    {% if product_obj.condition != '0' %}
+                    <span>
+                        <strong>Stan: </strong>
+                        {{ product_obj.condition }}
+                    </span>
+                    {% endif %}
+
+                    <span>
+                        <strong>Kategoria: </strong>
+                        <a href="{% url 'product-category' product_obj.category.slug %}"
+                            style="color: #6c757d;">{{ product_obj.category }}</a></p>
+                </span>
+
+
+
+
+
+
+
 
             </div>
 
             <div class="text-center text-md-left">
+                {% if product_obj.auction_url != '#' %}
                 <a href="{{ product_obj.auction_url }}" target="_blank"><button type="button"
                         class="btn btn-outline-secondary btn-rounded waves-effect">Przejdź do Allegro</button></a>
+                {% endif %}
+
                 {% if request.user.is_superuser %}
                 <a href="{% url 'product-update' product.slug %}" class="h-a-btn"> <button type="button"
                         class="btn btn-outline-secondary ">Edytuj</button></a>
