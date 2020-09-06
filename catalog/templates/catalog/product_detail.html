@@ -37,13 +37,13 @@
         <div class="col-lg-5 text-left">
 
             <h2
-                class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4 p-product-title">
+                class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4 p-product-title h2-product-m-title">
                 {{ product_obj.title }}
                 {% if product.sale > 0 %} <span class="onsale_detail">-{{ product.show_promo }}%
                 </span> {% endif %}
             </h2>
 
-            <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
+            <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4 h3-product-m-price">
                 <span class="red-text font-weight-bold">
                     {% if product_obj.sale > 0 %}
                     <strong>{{product_obj.sale}} zł <span class="sale strikethrough"

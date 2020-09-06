@@ -127,6 +127,18 @@ a.page-contact-link:hover {
   ul.navbar-nav {
     margin: 0 auto;
   }
+
+  .nav-top-m-text {
+    font-size: 0.9rem;
+  }
+
+  .h2-product-m-title {
+    font-size: 1.5rem !important;
+  }
+
+  .h3-product-m-price {
+    font-size: 1.3rem !important;
+  }
 }
 
 @media (max-width: 992px) {
